@@ -137,15 +137,7 @@ src/
 - **Authentication**: NextAuth.js with Discord Provider
 - **Database**: MongoDB with Mongoose
 - **Real-time**: Socket.IO (coming soon)
-
-## การพัฒนาต่อ
-
-- [ ] อัปโหลดรูปภาพ
-- [ ] Real-time notifications
-- [ ] Like/Unlike posts
-- [ ] Reply to comments
-- [ ] User profiles
-- [ ] Dark mode
+- **Hosting**: Vercel(coming soon)
 
 ## License
 
