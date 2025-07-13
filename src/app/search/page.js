@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSession } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import PostCard from '../../components/PostCard';
 import FollowButton from '../../components/FollowButton';
 import EnhancedRoleBadge from '../../components/EnhancedRoleBadge';
-export default function Search() {
+function SearchContent() {
   const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -223,7 +223,7 @@ export default function Search() {
               {/* No results */}
               {results.users.length === 0 && results.posts.length === 0 && !loading && (
                 <div className="text-center py-8">
-                  <p className="text-base-content/60">ไม่พบผลการค้นหาสำหรับ "{query}"</p>
+                  <p className="text-base-content/60">ไม่พบผลการค้นหาสำหรับ &quot;{query}&quot;</p>
                 </div>
               )}
             </>
@@ -231,5 +231,17 @@ export default function Search() {
         </>
       )}
     </div>
+  );
+}
+
+export default function Search() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-base-200 flex items-center justify-center">
+        <div className="loading loading-spinner loading-lg"></div>
+      </div>
+    }>
+      <SearchContent />
+    </Suspense>
   );
 }

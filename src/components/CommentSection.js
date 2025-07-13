@@ -480,7 +480,7 @@ export default function CommentSection({ postId, initialComments = [] }) {
                   placeholder="comment ไม่เหมาะสม"
                 />
                 <div className="text-xs text-base-content/60 mt-1">
-                  หากปล่อยว่างไว้ จะใช้เหตุผลเริ่มต้น: "comment ไม่เหมาะสม"
+                  หากปล่อยว่างไว้ จะใช้เหตุผลเริ่มต้น: &quot;comment ไม่เหมาะสม&quot;
                 </div>
               </div>
             )}

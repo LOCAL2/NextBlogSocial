@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSession } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useToast } from '../../components/Toast';
 
-export default function Friends() {
+function FriendsContent() {
   const { data: session, status } = useSession();
   const toast = useToast();
   const searchParams = useSearchParams();
@@ -270,5 +270,17 @@ export default function Friends() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function Friends() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-base-200 flex items-center justify-center">
+        <div className="loading loading-spinner loading-lg"></div>
+      </div>
+    }>
+      <FriendsContent />
+    </Suspense>
   );
 }

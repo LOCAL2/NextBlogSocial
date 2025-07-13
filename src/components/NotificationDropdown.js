@@ -277,7 +277,7 @@ export default function NotificationDropdown() {
                       
                       {notification.relatedPost?.content && (
                         <p className="text-xs text-base-content/60 mt-1 truncate">
-                          "{notification.relatedPost.content}"
+                          "                          &quot;{notification.relatedPost.content}&quot;"
                         </p>
                       )}
                       

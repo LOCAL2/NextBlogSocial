@@ -252,7 +252,7 @@ export default function SimpleNotificationDropdown() {
 
                   {notification.relatedPost?.content && (
                     <p className="text-xs text-base-content/60 ml-8 truncate">
-                      "{notification.relatedPost.content.substring(0, 50)}..."
+                      "                      &quot;{notification.relatedPost.content.substring(0, 50)}...&quot;"
                     </p>
                   )}
 
