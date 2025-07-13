@@ -103,10 +103,18 @@ export default function Home() {
       const response = await fetch('/api/posts/public');
       if (response.ok) {
         const data = await response.json();
-        setPosts(data);
+        // Handle both old format (array) and new format (object with posts property)
+        if (Array.isArray(data)) {
+          setPosts(data);
+        } else if (data.posts && Array.isArray(data.posts)) {
+          setPosts(data.posts);
+        } else {
+          setPosts([]);
+        }
       }
     } catch (error) {
       console.error('Error fetching posts:', error);
+      setPosts([]); // Set empty array on error
     } finally {
       setLoading(false);
     }
